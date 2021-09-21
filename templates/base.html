@@ -1,0 +1,45 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Janken-Lab</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'janken/css/style.css' %}">
+    {% block exheader %}{% endblock exheader%}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand flex-md-row navbar-dark bg-dark">
+      <div class="container justify-content-between">
+        <a class="navbar-brand" href="/">Janken-Lab</a>
+        <ul class="navbar-nav mr-md-2">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link">{{ user.username }}</a>
+              <a class="nav-link" href="{% url 'logout' %}">ログアウト</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">ログイン</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signup' %}">会員登録</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        {% block main %}{% endblock main %}
+      </div>
+    </main>
+    
+  </body>
+
+</html>
