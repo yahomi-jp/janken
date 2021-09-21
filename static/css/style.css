@@ -1,0 +1,41 @@
+body {
+  background-color: rgb(241, 241, 237);
+}
+
+main {
+  padding: 2rem 0;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: rgb(241, 241, 237);
+}
+
+a:hover {
+  color: black;
+}
+
+.welcome {
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  background-color: #484e60;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-welcome {
+  color: white;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  background-color: #484e60;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+}

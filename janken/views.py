@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 # トップページ用View
 def top(request):
-    return HttpResponse('Hello, World')
+    return render(request, 'janken/top.html')
