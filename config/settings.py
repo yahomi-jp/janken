@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'janken.apps.JankenConfig',
+    'django_bootstrap5',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
