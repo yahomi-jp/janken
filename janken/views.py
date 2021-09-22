@@ -1,5 +1,5 @@
 from janken.models import Opponent
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseForbidden
 
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -16,8 +16,12 @@ def top(request):
 
 @login_required
 def opponent_detail(request, opponent_id):
+    user_id = request.user.id
     opponent = get_object_or_404(Opponent, pk=opponent_id)
-    context = {
-        'opponent': opponent
-    }
-    return render(request, 'janken/opponent_detail.html', context)
+    if opponent.created_by.id == user_id:
+        context = {
+            'opponent': opponent 
+        }
+        return render(request, 'janken/opponent_detail.html', context)
+    else:
+        return HttpResponseForbidden('このページの閲覧は許可されていません')
