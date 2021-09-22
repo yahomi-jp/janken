@@ -39,3 +39,36 @@ a:hover {
 .nav-item {
   display: flex;
 }
+
+.message {
+  text-align: center;
+}
+
+
+.opponents-list > li {
+  border-bottom: 1px solid black;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  list-style: none;
+  text-align: center;
+  width: auto;
+  line-height: 40px;
+  margin-right: 32px;
+}
+
+.opponent {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.opponent:hover {
+  cursor: pointer;
+  color: aliceblue;
+  background-color: #484e60;
+}
+
+
+.opponents-header {
+  border-bottom: 1px solid black;
+}

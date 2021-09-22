@@ -5,8 +5,26 @@
   <div class="welcome">
     <h1 class="title">ようこそ、Janken-Labへ！</h1>
     <p class="subtitle">じゃんけんの勝率をあげましょう</p>
-
   </div>
+
+  {% if user.is_authenticated %}
+    {% if opponents %}
+      <ul class="opponents-list">
+        <li class="opponents-header">opponents一覧</li>
+        {% for opponent in opponents %}
+          {% if opponent.created_by.id == user.id %}
+            <li>
+              <a href="{% url 'janken:opponent_detail' opponent.id %}" class="opponent">
+                {{ opponent.name }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="message">対戦相手がまだいません.</p>
+    {% endif %}
+  {% endif %}
 
 
 {% endblock main %}
