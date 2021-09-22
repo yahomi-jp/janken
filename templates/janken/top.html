@@ -12,13 +12,11 @@
       <ul class="opponents-list">
         <li class="opponents-header">対戦相手一覧</li>
         {% for opponent in opponents %}
-          {% if opponent.created_by.id == user.id %}
             <li>
               <a href="{% url 'janken:op_detail' opponent.id %}" class="opponent">
                 {{ opponent.name }}
               </a>
             </li>
-          {% endif %}
         {% endfor %}
       </ul>
     {% else %}

@@ -20,7 +20,7 @@ a:hover {
   color: white;
   padding: 3rem 0;
   margin-bottom: 2rem;
-  background-color: #484e60;
+  background-color: #4483cc;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ a:hover {
   color: white;
   padding: 1rem 0;
   margin-bottom: 1rem;
-  background-color: #484e60;
+  background-color: #4483cc;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -65,7 +65,7 @@ a:hover {
 .opponent:hover {
   cursor: pointer;
   color: aliceblue;
-  background-color: #484e60;
+  background-color: #4483cc;
 }
 
 
