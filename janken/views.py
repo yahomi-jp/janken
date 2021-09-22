@@ -7,7 +7,12 @@ from django.shortcuts import render, get_object_or_404
 
 # トップページ用View
 def top(request):
-    return render(request, 'janken/top.html')
+    user_id = request.user.id
+    opponents = Opponent.objects.filter(id=user_id)
+    context = {
+        'opponents': opponents
+    }
+    return render(request, 'janken/top.html', context)
 
 
 def opponent_detail(request, opponent_id):
