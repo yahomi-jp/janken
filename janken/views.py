@@ -2,7 +2,7 @@ from janken.models import Opponent
 from django.http.response import HttpResponse
 
 from django.shortcuts import render, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # トップページ用View
@@ -14,7 +14,7 @@ def top(request):
     }
     return render(request, 'janken/top.html', context)
 
-
+@login_required
 def opponent_detail(request, opponent_id):
     opponent = get_object_or_404(Opponent, pk=opponent_id)
     context = {
