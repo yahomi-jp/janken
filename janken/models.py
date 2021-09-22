@@ -41,12 +41,12 @@ class Match(models.Model):
     )
     oppnent_hand = models.CharField(
         '相手の手',
-        max_length=1,
+        max_length=8,
         choices=HANDS
     )
     my_hand = models.CharField(
         '自分の手',
-        max_length=1,
+        max_length=8,
         choices=HANDS
     )
     result = models.CharField(
