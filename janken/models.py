@@ -18,7 +18,7 @@ class Opponent(models.Model):
     def __str__(self):
         return self.name
 
-class Match(models.Model):
+class Game(models.Model):
     HANDS = (
         ('rock', 'グー'),
         ('paper', 'チョキ'),
@@ -54,3 +54,9 @@ class Match(models.Model):
         max_length=4,
         choices=RESULTS
     )
+
+    class Meta:
+        db_table = 'games'
+
+    def __str__(self):
+        return  f'{self.opponent} - {self.created_by}'
