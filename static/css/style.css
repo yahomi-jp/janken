@@ -16,6 +16,14 @@ a:hover {
   color: black;
 }
 
+.btn-color {
+  background-color: aliceblue;
+}
+
+.btn-color:hover {
+  opacity: 0.8;
+}
+
 .welcome {
   color: white;
   padding: 3rem 0;

@@ -5,6 +5,7 @@
   <div class="welcome">
     <h1 class="title">ようこそ、Janken-Labへ！</h1>
     <p class="subtitle">じゃんけんの勝率をあげましょう</p>
+    <a href="{% url 'janken:op_new' %}" class="btn btn-color">対戦相手を追加</a>
   </div>
 
   {% if user.is_authenticated %}

@@ -25,3 +25,8 @@ def opponent_detail(request, opponent_id):
         return render(request, 'janken/opponent_detail.html', context)
     else:
         return HttpResponseForbidden('このページの閲覧は許可されていません')
+
+
+@login_required
+def opponent_new(request):
+    return render(request, 'janken/opponent_new.html')
