@@ -24,6 +24,15 @@ a:hover {
   opacity: 0.8;
 }
 
+.btn-submit {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  background-color: #4483cc;
+  color: aliceblue;
+}
+
+
 .welcome {
   color: white;
   padding: 3rem 0;

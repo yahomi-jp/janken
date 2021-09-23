@@ -1,7 +1,8 @@
+from janken.forms import OpponentForm
 from janken.models import Opponent
 from django.http.response import HttpResponse, HttpResponseForbidden
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -29,4 +30,16 @@ def opponent_detail(request, opponent_id):
 
 @login_required
 def opponent_new(request):
-    return render(request, 'janken/opponent_new.html')
+    if request.method == 'POST':
+        form = OpponentForm(request.POST)
+        if form.is_valid():
+            opponent = form.save(commit=False)
+            opponent.created_by = request.user
+            opponent.save()
+            return redirect('janken:top')
+    else:
+        form = OpponentForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'janken/opponent_new.html', context)

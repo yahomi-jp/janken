@@ -4,4 +4,6 @@ from django.db.models.base import Model
 from .models import Opponent, Game
 
 class OpponentForm(forms.ModelForm):
-    fields = ('name',)
+    class Meta:
+        model = Opponent
+        fields = ('name',)
