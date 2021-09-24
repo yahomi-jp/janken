@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 # トップページ用View
 def top(request):
     user_id = request.user.id
-    opponents = Opponent.objects.filter(id=user_id)
+    opponents = Opponent.objects.all()
     context = {
         'opponents': opponents
     }
