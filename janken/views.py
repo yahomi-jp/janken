@@ -1,4 +1,4 @@
-from janken.forms import OpponentForm
+from janken.forms import GameForm, OpponentForm
 from janken.models import Opponent
 from django.http.response import HttpResponse, HttpResponseForbidden
 
@@ -19,9 +19,11 @@ def top(request):
 def opponent_detail(request, opponent_id):
     user_id = request.user.id
     opponent = get_object_or_404(Opponent, pk=opponent_id)
+    form = GameForm()
     if opponent.created_by.id == user_id:
         context = {
-            'opponent': opponent 
+            'opponent': opponent,
+            'form': form
         }
         return render(request, 'janken/opponent_detail.html', context)
     else:

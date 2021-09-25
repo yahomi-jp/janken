@@ -39,7 +39,7 @@ class Game(models.Model):
         verbose_name='作成者',
         on_delete=models.CASCADE
     )
-    oppnent_hand = models.CharField(
+    opponent_hand = models.CharField(
         '相手の手',
         max_length=8,
         choices=HANDS
