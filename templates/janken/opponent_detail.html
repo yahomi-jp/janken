@@ -8,7 +8,7 @@
     <h1 class="title">{{ opponent.name }}</h1>
   </div>
   <div class="game-form">
-    <form action="" method="post">
+    <form action="{% url 'janken:game_register' opponent.id %}" method="post">
       {% csrf_token %}
       {% bootstrap_form form %}
       <button type="submit" class="btn btn-submit">
