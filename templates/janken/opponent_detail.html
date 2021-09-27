@@ -11,10 +11,14 @@
   <div class="info-box">
     <div class="win-rate">
       <p>勝率</p>
-      <p>{{ win_rate }} %</p>
+      <p>{{ win_rate }}
+        %</p>
     </div>
     <div class="guess-ophand">
       <p>予想</p>
+      {% for hand in guess_ophand %}
+        <p>{{ hand.opponent_hand }}</p>
+      {% endfor %}
     </div>
   </div>
 

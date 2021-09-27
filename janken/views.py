@@ -1,7 +1,7 @@
 from janken.forms import GameForm, OpponentForm
 from janken.models import Opponent, Game
 from django.http.response import HttpResponse, HttpResponseForbidden
-
+from django.db.models import Count
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -21,11 +21,13 @@ def opponent_detail(request, opponent_id):
     opponent = get_object_or_404(Opponent, pk=opponent_id)
     form = GameForm()
     win_rate = round(Game.objects.filter(opponent=opponent_id).filter(result='勝ち').count() / Game.objects.filter(opponent=opponent_id).count() * 100, 1)
+    guess_ophand = Game.objects.filter(opponent=opponent_id).annotate(Count('opponent_hand')).order_by('opponent_hand__count')[:1]
     if opponent.created_by.id == user_id:
         context = {
             'opponent': opponent,
             'form': form,
             'win_rate': win_rate,
+            'guess_ophand': guess_ophand,
         }
         return render(request, 'janken/opponent_detail.html', context)
     else:
@@ -57,9 +59,9 @@ def game_register(request, opponent_id):
                 game.opponent_id = opponent_id
                 game.created_by = request.user
                 # 勝敗判定
-                if int(game.my_hand) - int(game.opponent_hand) + 3 % 3 == 2:
+                if (int(game.my_hand) - int(game.opponent_hand) + 3) % 3 == 2:
                     game.result = '勝ち'
-                elif int(game.my_hand) - int(game.opponent_hand) + 3 % 3 == 1:
+                elif (int(game.my_hand) - int(game.opponent_hand) + 3) % 3 == 1:
                     game.result = '負け'
                 else:
                     game.result = 'あいこ'
