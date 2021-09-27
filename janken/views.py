@@ -1,5 +1,5 @@
 from janken.forms import GameForm, OpponentForm
-from janken.models import Opponent
+from janken.models import Opponent, Game
 from django.http.response import HttpResponse, HttpResponseForbidden
 
 from django.shortcuts import redirect, render, get_object_or_404
@@ -20,10 +20,12 @@ def opponent_detail(request, opponent_id):
     user_id = request.user.id
     opponent = get_object_or_404(Opponent, pk=opponent_id)
     form = GameForm()
+    win_rate = round(Game.objects.filter(opponent=opponent_id).filter(result='勝ち').count() / Game.objects.filter(opponent=opponent_id).count() * 100, 1)
     if opponent.created_by.id == user_id:
         context = {
             'opponent': opponent,
-            'form': form
+            'form': form,
+            'win_rate': win_rate,
         }
         return render(request, 'janken/opponent_detail.html', context)
     else:

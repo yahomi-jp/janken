@@ -95,3 +95,12 @@ a:hover {
 .opponents-header {
   border-bottom: 1px solid black;
 }
+
+.info-box {
+  display: flex;
+}
+
+.win-rate, .guess-ophand {
+  width: 50%;
+  text-align: center;
+}

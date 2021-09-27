@@ -7,6 +7,17 @@
     <h1 class="sub-title">VS</h1>
     <h1 class="title">{{ opponent.name }}</h1>
   </div>
+
+  <div class="info-box">
+    <div class="win-rate">
+      <p>勝率</p>
+      <p>{{ win_rate }} %</p>
+    </div>
+    <div class="guess-ophand">
+      <p>予想</p>
+    </div>
+  </div>
+
   <div class="game-form">
     <form action="{% url 'janken:game_register' opponent.id %}" method="post">
       {% csrf_token %}
