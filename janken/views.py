@@ -45,3 +45,15 @@ def opponent_new(request):
             'form': form
         }
         return render(request, 'janken/opponent_new.html', context)
+
+@login_required
+def game_register(request, opponent_id):
+        if request.method == 'POST':
+            form = GameForm(request.POST)
+            if form.is_valid():
+                game = form.save(commit=False)
+                game.opponent = opponent_id
+                game.created_by = request.user
+                
+        else:
+            return HttpResponseForbidden('正規の手順を踏んでください')
