@@ -24,11 +24,6 @@ class Game(models.Model):
         ('1', 'チョキ'),
         ('2', 'パー'),
     )
-    RESULTS = (
-        ('win', '勝ち'),
-        ('lose', '負け'),
-        ('draw', 'あいこ'),
-    )
     opponent = models.ForeignKey(
         Opponent,
         verbose_name='対戦相手',
@@ -52,7 +47,6 @@ class Game(models.Model):
     result = models.CharField(
         '対戦結果',
         max_length=4,
-        choices=RESULTS
     )
 
     class Meta:
