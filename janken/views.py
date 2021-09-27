@@ -20,7 +20,7 @@ def opponent_detail(request, opponent_id):
     user_id = request.user.id
     opponent = get_object_or_404(Opponent, pk=opponent_id)
     form = GameForm()
-    win_rate = round(Game.objects.filter(opponent=opponent_id).filter(result='勝ち').count() / Game.objects.filter(opponent=opponent_id).count() * 100, 1)
+    win_rate = round(Game.objects.filter(opponent=opponent_id).filter(result='勝ち').count() / Game.objects.filter(opponent=opponent_id).exclude(result='あいこ').count() * 100, 1)
     guess_ophand = Game.objects.filter(opponent=opponent_id).annotate(Count('opponent_hand')).order_by('opponent_hand__count')[:1]
     if opponent.created_by.id == user_id:
         context = {
