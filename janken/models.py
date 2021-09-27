@@ -20,9 +20,9 @@ class Opponent(models.Model):
 
 class Game(models.Model):
     HANDS = (
-        ('rock', 'グー'),
-        ('paper', 'チョキ'),
-        ('scissors', 'パー'),
+        ('0', 'グー'),
+        ('1', 'チョキ'),
+        ('2', 'パー'),
     )
     RESULTS = (
         ('win', '勝ち'),
@@ -41,12 +41,12 @@ class Game(models.Model):
     )
     opponent_hand = models.CharField(
         '相手の手',
-        max_length=8,
+        max_length=1,
         choices=HANDS
     )
     my_hand = models.CharField(
         '自分の手',
-        max_length=8,
+        max_length=1,
         choices=HANDS
     )
     result = models.CharField(
